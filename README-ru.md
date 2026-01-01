@@ -1,5 +1,7 @@
 #	Tasmota  Alarm Camera and Sirena Control
 
+(circuit/kicad/Esp8266-DomoticzAlarm-2B/Esp8266-DomoticzAlarm-2B.png)[]
+
 Это бюджетный контрольный блок позволяющий подключать сирену и IPC-камеру используя контакт DI.
  
 питание 5v - 12v.
