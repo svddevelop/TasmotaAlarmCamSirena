@@ -40,3 +40,6 @@ After it will be any MQTT check the information from the switch3 for 'ON', 'OFF'
 * add button "append TasmotaAlarmSirenaSwitch3" with autoatically filling of the Desctiption with JSON;
 * as parameter will be device numeration.
 
+
+
+
