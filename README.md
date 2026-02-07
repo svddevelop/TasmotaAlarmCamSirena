@@ -38,6 +38,10 @@ The configuration includes the following elements:
 
 `<device_ip>` — the unique IP address of the device in your network.  
 `<DeviceID>` — the unique identifier of the device.
+### Curcuit
+
+[see](circuit/kicad/Esp8266-DomoticzAlarm-2B/README.md)
+
 
 ### Plugin for Domoticz
 
