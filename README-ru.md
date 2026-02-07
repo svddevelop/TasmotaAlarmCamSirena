@@ -1,27 +1,44 @@
-#	Tasmota  Alarm Camera and Sirena Control
+# Tasmota Alarm Camera and Sirena Control
 
 ![](circuit/kicad/Esp8266-DomoticzAlarm-2B/Esp8266-DomoticzAlarm-2B.png)
 
-Это бюджетный контрольный блок позволяющий подключать сирену и IPC-камеру используя контакт DI.
- 
-питание 5v - 12v.
-подключение к внешней сирене с уровнем текущего напряжения питания.
-Подключение управаления камерой к сигналу DI с уровнем 3.3v. 
+This is a budget control unit that allows connecting a siren and an IPC camera using the DI contact.  
+Power supply: 5V – 12V.  
+Connection to an external siren with voltage level matching the power supply.  
+Camera control connection to the DI signal at 3.3V level.
 
-###	Конфигурация tasmota
+### Tasmota Configuration
 
-Конфигурация имеет следующие элементы:
+![](scripts/Domoticz/plugins/TasmotaMQTTAlarmCtrl/tasmota-module-conf.jpg)
 
--	relay 1 - включение слежение за датчиком. Используется для активации слежения сигнала от датчика (например Reeed-contact). Возможность активировать через панель управления устройсвом, через web-интерфейс вызовом `http://<device_ip>/cm?cmnd=power1%201` для активации и `http://<device ip>/cm?cmnd=power1%200` для деактивации, либо посредсвом отправки mqtt сообщения в топик `cmnd/tasmota_<DeviceID>/POWER1` сообщений `ON` или `OFF`.
+The configuration includes the following elements:
 
--	relay 2 - принудительная активация сирены. Если используется сирена, то ее активацию можно произвести программно через панель управления устройсвом, через web-интерфейс вызовом `http://<device ip>/cm?cmnd=power2%201` для активации и `http://<device ip>/cm?cmnd=power2%200` для деактивации, либо посредсвом отправки mqtt сообщения в топик `cmnd/tasmota_<DeviceID>/POWER2` сообщений `ON` или `OFF`. Если используется камера, то сигнал записи данных будет подаваться автоматически.
+- **Relay1** — enables monitoring of the sensor.  
+  Used to activate tracking of the sensor signal (e.g., Reed contact).  
+  Can be activated via the device control panel, through the web interface with the request  
+  `http://<device_ip>/cm?cmnd=power1%201` (to turn on) and  
+  `http://<device_ip>/cm?cmnd=power1%200` (to turn off),  
+  or by sending an MQTT message to the topic  
+  `cmnd/tasmota_<DeviceID>/POWER1` with payload `ON` or `OFF`.
 
--	switch 3 - показывает текущее состояние датчика. Его можно проверить по web-интерфейс с запросом `http://<device_ip>/cm?cmnd=status%2010` или через mqtt отправкой в топик `cmnd/tasmota_502044/Status` сообщения `10`. 
+- **Relay2** — forced siren activation.  
+  If a siren is used, its activation can be triggered programmatically via the device control panel,  
+  through the web interface with the request  
+  `http://<device_ip>/cm?cmnd=power2%201` (to turn on) and  
+  `http://<device_ip>/cm?cmnd=power2%200` (to turn off),  
+  or by sending an MQTT message to the topic  
+  `cmnd/tasmota_<DeviceID>/POWER2` with payload `ON` or `OFF`.  
+  If a camera is used, the recording trigger signal will be sent automatically.
 
-	`<device_ip>` - это уникальный адрес устройства в вашей сети.
+- **Switch3** — shows the current state of the sensor.  
+  Can be checked via the web interface with the request  
+  `http://<device_ip>/cm?cmnd=status%2010`,  
+  or through MQTT by sending the message `10` to the topic  
+  `cmnd/tasmota_<DeviceID>/Status`.
 
-	`<DeviceID>` - уникальный идентификатор устройства.
+`<device_ip>` — the unique IP address of the device in your network.  
+`<DeviceID>` — the unique identifier of the device.
 
+### Plugin for Domoticz
 
-
-
+[see](scripts/Domoticz/plugins/TasmotaMQTTAlarmCtrl/README.md)
