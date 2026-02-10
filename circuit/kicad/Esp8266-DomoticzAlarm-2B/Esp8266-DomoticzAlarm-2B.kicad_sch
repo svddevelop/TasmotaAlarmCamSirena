@@ -5446,10 +5446,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "12f19879-e9f4-43a0-91e2-1b2a4645eeea")
 		(property "Reference" "CH_C3"
-			(at 72.39 34.2899 0)
+			(at 69.088 32.766 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5458,7 +5457,7 @@
 			)
 		)
 		(property "Value" "4,7µF"
-			(at 72.39 36.8299 0)
+			(at 71.12 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5901,7 +5900,7 @@
 		(dnp no)
 		(uuid "50f778f3-4be4-474e-882e-22ee018f79fb")
 		(property "Reference" "CH_C5"
-			(at 55.372 34.544 0)
+			(at 49.022 41.148 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5910,7 +5909,7 @@
 			)
 		)
 		(property "Value" "470nF"
-			(at 56.388 36.83 0)
+			(at 49.022 43.434 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6531,7 +6530,7 @@
 		(dnp no)
 		(uuid "72544f3a-2fd8-4be4-8c5c-2f2492150bd9")
 		(property "Reference" "CH_C2"
-			(at 62.992 34.544 0)
+			(at 60.452 33.274 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6540,7 +6539,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 64.008 36.83 0)
+			(at 60.198 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
