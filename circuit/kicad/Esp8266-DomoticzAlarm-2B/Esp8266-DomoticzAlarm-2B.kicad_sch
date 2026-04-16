@@ -4,6 +4,12 @@
 	(generator_version "9.0")
 	(uuid "e1345bf2-2850-4d6e-a7ea-3c40f0f448c6")
 	(paper "A4")
+	(title_block
+		(title "TasmotaCamAlarmSirena")
+		(date "2026-04-04")
+		(rev "1.2")
+		(company "(C) SVDdevelop")
+	)
 	(lib_symbols
 		(symbol "Connector:Barrel_Jack_Switch"
 			(pin_names
@@ -1131,6 +1137,156 @@
 				)
 			)
 			(symbol "1N4001_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Diode:1N5819WS"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1N5819WS"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Diode_SMD:D_SOD-323"
+				(at 0 -4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode Schottky"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "D*SOD?323*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1N5819WS_0_1"
+				(polyline
+					(pts
+						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "1N5819WS_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -2794,6 +2950,12 @@
 		(uuid "a217c904-4feb-4920-a117-7bc973f7fe77")
 	)
 	(junction
+		(at 35.56 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a79ab16d-b91b-44ab-ac08-4a093231e2d0")
+	)
+	(junction
 		(at 140.97 54.61)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2804,6 +2966,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "be4c3aa7-d2ff-4a40-aff4-556bdfbe339c")
+	)
+	(junction
+		(at 101.6 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ca4e7b16-e222-4dde-90c7-25dfde6f1b33")
 	)
 	(junction
 		(at 68.58 39.37)
@@ -2824,12 +2992,6 @@
 		(uuid "d54cc699-98e2-4919-a93c-74abd0991e2f")
 	)
 	(junction
-		(at 35.56 52.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dc75e715-bf65-4dbd-ae90-a33fcbd57c80")
-	)
-	(junction
 		(at 35.56 29.21)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2846,6 +3008,16 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f932967e-6ec2-4607-9a65-d3961468ede7")
+	)
+	(wire
+		(pts
+			(xy 35.56 52.07) (xy 35.56 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01702ad0-4b94-4496-8645-b5173800e5d4")
 	)
 	(wire
 		(pts
@@ -3119,16 +3291,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 48.26) (xy 36.83 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "647979c1-36cc-453a-b94a-d97adb3cac79")
-	)
-	(wire
-		(pts
 			(xy 31.75 31.75) (xy 31.75 29.21)
 		)
 		(stroke
@@ -3179,6 +3341,16 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 110.49) (xy 101.6 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "721474d4-1c3d-454c-871b-1d8de1761010")
+	)
+	(wire
+		(pts
 			(xy 67.31 29.21) (xy 68.58 29.21)
 		)
 		(stroke
@@ -3226,6 +3398,16 @@
 			(type default)
 		)
 		(uuid "83bbfb6c-eded-4564-8125-f4e20e77adfb")
+	)
+	(wire
+		(pts
+			(xy 35.56 48.26) (xy 36.83 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d23730c-6039-4446-bc2d-b260b3326475")
 	)
 	(wire
 		(pts
@@ -3289,13 +3471,23 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 52.07) (xy 35.56 53.34)
+			(xy 44.45 48.26) (xy 45.72 48.26)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "afa2e9ff-357f-44f7-82f3-0ed68c7b43b0")
+		(uuid "acb78d05-9477-44d9-aca1-9484dc87fc01")
+	)
+	(wire
+		(pts
+			(xy 111.76 110.49) (xy 110.49 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4223e22-9cb0-4386-8048-c5e21a0af61e")
 	)
 	(wire
 		(pts
@@ -3329,6 +3521,16 @@
 	)
 	(wire
 		(pts
+			(xy 35.56 52.07) (xy 36.83 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf096e4a-64d0-411a-975e-b4a57601f50d")
+	)
+	(wire
+		(pts
 			(xy 36.83 140.97) (xy 36.83 143.51)
 		)
 		(stroke
@@ -3359,13 +3561,13 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 52.07) (xy 36.83 52.07)
+			(xy 102.87 110.49) (xy 101.6 110.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c510098b-5df6-49fc-918c-4b388137a340")
+		(uuid "c621ca67-380e-42ca-8189-2aa1af7121a0")
 	)
 	(wire
 		(pts
@@ -3436,6 +3638,16 @@
 			(type default)
 		)
 		(uuid "d93c782d-1d2d-46c5-80a6-4a9712813df3")
+	)
+	(wire
+		(pts
+			(xy 100.33 125.73) (xy 101.6 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e06c8f45-37f4-4d79-b92e-ff1ba63f29e9")
 	)
 	(wire
 		(pts
@@ -3931,7 +4143,7 @@
 	)
 	(global_label "CH_12V"
 		(shape input)
-		(at 36.83 52.07 0)
+		(at 45.72 48.26 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3941,7 +4153,7 @@
 		)
 		(uuid "4393b641-930a-4549-a50a-b43a673271db")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 46.8909 52.07 0)
+			(at 55.7809 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4327,7 +4539,7 @@
 	)
 	(global_label "CH_GND"
 		(shape input)
-		(at 109.22 110.49 0)
+		(at 111.76 110.49 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4337,7 +4549,7 @@
 		)
 		(uuid "a9019311-e3ef-4711-8a90-ecc98304dfc3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 119.6438 110.49 0)
+			(at 122.1838 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4833,7 +5045,7 @@
 	)
 	(global_label "CH_VDD"
 		(shape input)
-		(at 101.6 110.49 180)
+		(at 100.33 110.49 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4843,7 +5055,7 @@
 		)
 		(uuid "f5a757a9-70d1-48ac-be9d-81b8aa38444f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 91.4181 110.49 0)
+			(at 90.1481 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5038,10 +5250,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "01f016c9-8ac8-413e-9c18-1db26c75f33e")
 		(property "Reference" "CH_C4"
-			(at 114.3 50.8 90)
+			(at 114.808 61.976 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5049,14 +5260,14 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 114.3 53.34 90)
+			(at 114.808 63.754 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 118.11 57.4548 0)
 			(effects
 				(font
@@ -5236,7 +5447,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 105.41 110.49 90)
+		(at 106.68 110.49 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5245,7 +5456,7 @@
 		(fields_autoplaced yes)
 		(uuid "0e8be6c9-fd98-4ca9-a94c-b6eb5e35f65e")
 		(property "Reference" "CH_C1"
-			(at 105.41 102.87 90)
+			(at 106.68 102.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5253,7 +5464,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 105.41 105.41 90)
+			(at 106.68 105.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5261,7 +5472,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 109.22 109.5248 0)
+			(at 110.49 109.5248 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5270,7 +5481,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 105.41 110.49 0)
+			(at 106.68 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5279,7 +5490,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 105.41 110.49 0)
+			(at 106.68 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6547,7 +6758,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 58.7248 31.75 0)
 			(effects
 				(font
@@ -6724,7 +6935,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDD")
-		(at 101.6 125.73 270)
+		(at 100.33 125.73 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6732,7 +6943,7 @@
 		(dnp no)
 		(uuid "8b479b2d-1516-4577-b920-ee9e4395dd6e")
 		(property "Reference" "#PWR04"
-			(at 95.25 125.73 0)
+			(at 93.98 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6741,7 +6952,7 @@
 			)
 		)
 		(property "Value" "GNDD"
-			(at 99.06 125.984 90)
+			(at 97.79 125.984 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6750,7 +6961,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 101.6 125.73 0)
+			(at 100.33 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6759,7 +6970,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 101.6 125.73 0)
+			(at 100.33 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6768,7 +6979,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDD\" , digital ground"
-			(at 101.6 125.73 0)
+			(at 100.33 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6790,7 +7001,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDD")
-		(at 36.83 48.26 90)
+		(at 36.83 52.07 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6798,7 +7009,7 @@
 		(dnp no)
 		(uuid "9093a787-4304-4a68-bef5-5bc4c41f4b06")
 		(property "Reference" "#PWR06"
-			(at 43.18 48.26 0)
+			(at 43.18 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6807,7 +7018,7 @@
 			)
 		)
 		(property "Value" "GNDD"
-			(at 39.37 48.006 90)
+			(at 39.37 51.816 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6816,7 +7027,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 36.83 48.26 0)
+			(at 36.83 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6825,7 +7036,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 36.83 48.26 0)
+			(at 36.83 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6834,7 +7045,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDD\" , digital ground"
-			(at 36.83 48.26 0)
+			(at 36.83 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7276,6 +7487,76 @@
 			(project ""
 				(path "/e1345bf2-2850-4d6e-a7ea-3c40f0f448c6"
 					(reference "ch_J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N5819WS")
+		(at 40.64 48.26 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d33ef6b2-84da-41d7-8230-33c06147017d")
+		(property "Reference" "D2"
+			(at 40.9575 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "1N5819WS"
+			(at 40.9575 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+			(at 40.64 43.815 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
+			(at 40.64 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
+			(at 40.64 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "62df5e4b-9c6d-4e1a-bba0-956c469f75f0")
+		)
+		(pin "1"
+			(uuid "0958189e-25a5-4fe3-9534-6605ae6091d1")
+		)
+		(instances
+			(project ""
+				(path "/e1345bf2-2850-4d6e-a7ea-3c40f0f448c6"
+					(reference "D2")
 					(unit 1)
 				)
 			)

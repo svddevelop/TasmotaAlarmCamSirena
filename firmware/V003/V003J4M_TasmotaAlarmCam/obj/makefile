@@ -1,5 +1,5 @@
 ################################################################################
-# MRS Version: 2.3.0
+# MRS Version: 2.4.0
 # Automatically-generated file. Do not edit!
 ################################################################################
 -include ../makefile.init
@@ -52,7 +52,7 @@ main-build: V003J4M_TasmotaAlarmCam.elf secondary-outputs
 
 # Tool invocations
 V003J4M_TasmotaAlarmCam.elf: $(OBJS) $(USER_OBJS_ESCAPE)
-	@	riscv-none-embed-gcc -march=rv32ecxw -mabi=ilp32e -msmall-data-limit=0 -msave-restore -fmax-errors=20 -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized -g -T "z:/WI/TASMOTA-PROJECTS/AlarmControl/firmware/V003/V003J4M_TasmotaAlarmCam/Ld/Link.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"V003J4M_TasmotaAlarmCam.map" --specs=nano.specs --specs=nosys.specs -o "V003J4M_TasmotaAlarmCam.elf" $(OBJS) $(LIBS) -lprintf
+	@	riscv-none-embed-gcc -march=rv32ecxw -mabi=ilp32e -msmall-data-limit=0 -msave-restore -fmax-errors=20 -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized -g -T "z:\WI\TASMOTA-PROJECTS\TasmotaAlarmCamSirena\firmware\V003\V003J4M_TasmotaAlarmCam\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"V003J4M_TasmotaAlarmCam.map" --specs=nano.specs --specs=nosys.specs -o "V003J4M_TasmotaAlarmCam.elf" $(OBJS) $(LIBS) -lprintf
 V003J4M_TasmotaAlarmCam.hex: V003J4M_TasmotaAlarmCam.elf
 	@	riscv-none-embed-objcopy -O ihex "V003J4M_TasmotaAlarmCam.elf" "V003J4M_TasmotaAlarmCam.hex"
 V003J4M_TasmotaAlarmCam.lst: V003J4M_TasmotaAlarmCam.elf

@@ -51,3 +51,9 @@ The configuration includes the following elements:
 
 More description you can see at [this site](https://smartthings.cloudns.org/).
 
+[The device installation](https://smartthings.cloudns.org/page/tacs/)
+
+[The case for the device](https://www.thingiverse.com/thing:7336493)
+
+[The case for the reed-contact](https://www.thingiverse.com/thing:7336538)
+
