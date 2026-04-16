@@ -47,7 +47,8 @@ The configuration includes the following elements:
 
 [see](scripts/Domoticz/plugins/TasmotaMQTTAlarmCtrl/README.md)
 
-======
+---
+---
 
 More description you can see at [this site](https://smartthings.cloudns.org/).
 
