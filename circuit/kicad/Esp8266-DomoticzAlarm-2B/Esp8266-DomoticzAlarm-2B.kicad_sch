@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "TasmotaCamAlarmSirena")
-		(date "2026-04-04")
+		(date "2026-10-26")
 		(rev "1.2")
 		(company "(C) SVDdevelop")
 	)
@@ -2962,6 +2962,18 @@
 		(uuid "aca00bad-32b9-4761-80ca-3356f5f2571c")
 	)
 	(junction
+		(at 161.29 109.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b2cea346-84dd-444f-93a0-c158bdea391d")
+	)
+	(junction
+		(at 161.29 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b48505ae-86c4-4685-a65c-12a5e956bd7e")
+	)
+	(junction
 		(at 59.69 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3071,6 +3083,16 @@
 	)
 	(wire
 		(pts
+			(xy 162.56 105.41) (xy 162.56 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10e607fd-e09c-4ef5-a91f-d67d8bd60987")
+	)
+	(wire
+		(pts
 			(xy 160.02 142.24) (xy 161.29 142.24)
 		)
 		(stroke
@@ -3088,6 +3110,16 @@
 			(type default)
 		)
 		(uuid "189a8155-ff05-49ff-9c1c-5dca5d71a139")
+	)
+	(wire
+		(pts
+			(xy 162.56 106.68) (xy 161.29 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e4bf010-7b6c-4dfd-9ec8-02a77e19118f")
 	)
 	(wire
 		(pts
@@ -3158,6 +3190,16 @@
 			(type default)
 		)
 		(uuid "30e4c809-ba68-4826-ba10-eb6730dc04b0")
+	)
+	(wire
+		(pts
+			(xy 177.8 110.49) (xy 162.56 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31eebaaf-92b4-40df-b956-b0ae68ea2cf5")
 	)
 	(wire
 		(pts
@@ -3271,6 +3313,16 @@
 	)
 	(wire
 		(pts
+			(xy 177.8 105.41) (xy 162.56 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58f124fd-d9b3-4a37-95f9-943067b9ce2b")
+	)
+	(wire
+		(pts
 			(xy 50.8 31.75) (xy 52.07 31.75)
 		)
 		(stroke
@@ -3311,6 +3363,16 @@
 	)
 	(wire
 		(pts
+			(xy 177.8 109.22) (xy 177.8 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c8ae705-5a62-4e97-80a5-9c83a6df8067")
+	)
+	(wire
+		(pts
 			(xy 186.69 44.45) (xy 187.96 44.45)
 		)
 		(stroke
@@ -3318,6 +3380,16 @@
 			(type default)
 		)
 		(uuid "6e025324-53b2-49dc-b299-28ce7c6715d9")
+	)
+	(wire
+		(pts
+			(xy 161.29 109.22) (xy 162.56 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "701faad5-557c-48e5-b60b-c238fe1285e6")
 	)
 	(wire
 		(pts
@@ -3368,6 +3440,16 @@
 			(type default)
 		)
 		(uuid "7e6ccaf5-40d1-448d-9f4e-26927f8a118b")
+	)
+	(wire
+		(pts
+			(xy 162.56 110.49) (xy 162.56 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80b049e7-fc59-4298-b256-f2c68e136d3f")
 	)
 	(wire
 		(pts
@@ -3488,6 +3570,16 @@
 			(type default)
 		)
 		(uuid "b4223e22-9cb0-4386-8048-c5e21a0af61e")
+	)
+	(wire
+		(pts
+			(xy 177.8 106.68) (xy 177.8 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4c151d0-a5ac-478b-b9e7-9c0f385ad31c")
 	)
 	(wire
 		(pts
@@ -6011,6 +6103,77 @@
 			(project "Esp8266-DomoticzAlarm-2B"
 				(path "/e1345bf2-2850-4d6e-a7ea-3c40f0f448c6"
 					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 182.88 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3ff71787-5bf1-472c-bd29-8566d6d654f0")
+		(property "Reference" "J2a1"
+			(at 185.42 106.6799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Conn_01x02"
+			(at 185.42 109.2199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal"
+			(at 182.88 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2c74cd70-233c-4617-bd4d-41f5fa2cefda")
+		)
+		(pin "2"
+			(uuid "f6d8e80e-7ef9-4075-85de-27bd002f918a")
+		)
+		(instances
+			(project ""
+				(path "/e1345bf2-2850-4d6e-a7ea-3c40f0f448c6"
+					(reference "J2a1")
 					(unit 1)
 				)
 			)
