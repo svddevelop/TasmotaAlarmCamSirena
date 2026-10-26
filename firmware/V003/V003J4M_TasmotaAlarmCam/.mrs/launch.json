@@ -5,12 +5,12 @@
 			"type": "mrs-debugger",
 			"request": "launch",
 			"name": "V003J4M_TasmotaAlarmCam",
-			"cwd": "z:\\WI\\TASMOTA-PROJECTS\\AlarmControl\\firmware\\V003\\V003J4M_TasmotaAlarmCam",
+			"cwd": "z:\\WI\\TASMOTA-PROJECTS\\TasmotaAlarmCamSirena\\firmware\\V003\\V003J4M_TasmotaAlarmCam",
 			"openOCDCfg": {
 				"useLocalOpenOCD": true,
-				"executable": "y:/WI/MounRiver_Studio2/resources/app/resources/win32/components/WCH/OpenOCD/OpenOCD/bin/openocd.exe",
+				"executable": "y:/WI/MounRiver_Studio3/resources/app/resources/win32/components/WCH/OpenOCD/OpenOCD/bin/openocd.exe",
 				"configOptions": [
-					"-f \"y:/WI/MounRiver_Studio2/resources/app/resources/win32/components/WCH/OpenOCD/OpenOCD/bin/wch-riscv.cfg\" -c \"chip_id CH32V003\""
+					"-f \"y:/WI/MounRiver_Studio3/resources/app/resources/win32/components/WCH/OpenOCD/OpenOCD/bin/wch-riscv.cfg\" -c \"chip_id CH32V003\""
 				],
 				"gdbport": 3333,
 				"telnetport": 4444,
@@ -22,7 +22,7 @@
 				"enableNoZeroWaitingAreaFlash": false
 			},
 			"gdbCfg": {
-				"executable": "y:/WI/MounRiver_Studio2/resources/app/resources/win32/components/WCH/Toolchain/RISC-V Embedded GCC/bin/riscv-none-embed-gdb.exe",
+				"executable": "y:/WI/MounRiver_Studio3/resources/app/resources/win32/components/WCH/Toolchain/RISC-V Embedded GCC/bin/riscv-none-embed-gdb.exe",
 				"commands": [
 					"set mem inaccessible-by-default off",
 					"set architecture riscv:rv32",
@@ -39,8 +39,8 @@
 					"additionalCommands": []
 				},
 				"loadedFiles": {
-					"executableFile": "z:\\WI\\TASMOTA-PROJECTS\\AlarmControl\\firmware\\V003\\V003J4M_TasmotaAlarmCam\\obj\\V003J4M_TasmotaAlarmCam.elf",
-					"symbolFile": "z:\\WI\\TASMOTA-PROJECTS\\AlarmControl\\firmware\\V003\\V003J4M_TasmotaAlarmCam\\obj\\V003J4M_TasmotaAlarmCam.elf",
+					"executableFile": "z:\\WI\\TASMOTA-PROJECTS\\TasmotaAlarmCamSirena\\firmware\\V003\\V003J4M_TasmotaAlarmCam\\obj\\V003J4M_TasmotaAlarmCam.elf",
+					"symbolFile": "z:\\WI\\TASMOTA-PROJECTS\\TasmotaAlarmCamSirena\\firmware\\V003\\V003J4M_TasmotaAlarmCam\\obj\\V003J4M_TasmotaAlarmCam.elf",
 					"executableFileOffset": 0,
 					"symbolFileOffset": 0
 				},
@@ -54,7 +54,7 @@
 				},
 				"debugInRAM": false
 			},
-			"svdpath": "y:\\WI\\MounRiver_Studio2\\resources\\app\\resources\\win32\\components\\WCH\\SDK\\default/RISC-V/CH32V003/NoneOS/CH32V003xx.svd",
+			"svdpath": "y:\\WI\\MounRiver_Studio3\\resources\\app\\resources\\win32\\components\\WCH\\SDK\\default/RISC-V/CH32V003/NoneOS/CH32V003xx.svd",
 			"output": {
 				"showDebugGDBTrace": true,
 				"saveDebugOutputToFile": false,

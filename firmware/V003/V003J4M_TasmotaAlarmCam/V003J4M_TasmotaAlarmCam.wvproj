@@ -1,5 +1,6 @@
 {
 	"version": "1.0",
+	"hasAllParsed": true,
 	"isNormalMRSProject": true,
 	"basic": {
 		"chipInfo": {
@@ -9,9 +10,15 @@
 			"rtos": "NoneOS",
 			"mcu": "CH32V003J4M6",
 			"description": "Website: https://www.wch.cn/products/CH32V003.html?\\nThe CH32V003 series is an industral-grade general-purpose microcontroller designed based on the highland barley RISCV-V2A core, and supports 48MHz system frequency in terms of product functions. This series has the characteristics of wide voltage, single-wire debugging, low power consumption, ultra-small package and so on. Provide common peripheral functions, built-in 1 set of DMA controller, 1 set of 10-bit analog-to-digital conversion ADC, 1 set of op amp comparator, multiple sets of timers, standard communication interfaces such as USART, I2C, SPI, etc. The rated working voltage of the product is 3.3V or 5V, and the working temperature range is -40'C~85'C industrial grade.",
+			"tempratureScope": "",
+			"artifactType": "executable",
 			"link": "WCH-Link",
 			"peripheral_version": "2.1",
-			"calibrateSupport": false
+			"calibrateSupport": false,
+			"calibrateCommand": "",
+			"UIConfigSupport": false,
+			"UIConfigCommand": "",
+			"externalFlashSupport": false
 		},
 		"linkedFolders": [],
 		"removedResources": [
@@ -19,23 +26,54 @@
 				"parentLogicPath": "",
 				"type": "file",
 				"name": "*.wvproj"
+			},
+			{
+				"parentLogicPath": "User/SYS",
+				"type": "file",
+				"name": "millis.h"
+			},
+			{
+				"parentLogicPath": "User/SYS",
+				"type": "file",
+				"name": "millis.c"
+			},
+			{
+				"parentLogicPath": "User",
+				"type": "folder",
+				"name": "SYS"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.7z"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.zip"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.tar"
 			}
 		],
 		"projectName": "V003J4M_TasmotaAlarmCam",
 		"architecture": "RISC-V",
-		"projectType": "c"
+		"projectType": "cpp"
 	},
 	"buildConfig": {
 		"configurations": [
 			{
+				"parallelizationNumber": "optimal",
 				"buildArtifact": {
 					"artifact_name": "${ProjName}",
 					"artifact_extension": "elf",
 					"output_prefix": "",
 					"artifact_type": "Executable"
 				},
-				"parallelizationNumber": "optimal",
 				"stop_on_first_build_error": true,
+				"usingCacheAccelerate": false,
 				"pre_script": "",
 				"pre_script_description": "",
 				"post_script": "",
@@ -59,6 +97,7 @@
 					"code_generation_without_hardware_floating": false,
 					"use_pipelines": false,
 					"show_caret_indicating_the_column": false,
+					"calling_convention_variant": false,
 					"other_optimization_flags": ""
 				},
 				"warnings": {
@@ -120,12 +159,7 @@
 						"undefined_symbols": []
 					},
 					"includes": {
-						"include_paths": [
-							"${project}/Debug",
-							"${project}/Core",
-							"${project}/User",
-							"${project}/Peripheral/inc"
-						],
+						"include_paths": [],
 						"include_system_paths": [],
 						"include_files": []
 					},
@@ -162,9 +196,9 @@
 					"optimization": {
 						"cpp_language_standard": "gnucpp11",
 						"abi_version": "0",
-						"do_not_use_exceptions": false,
-						"do_not_use_rtti": false,
-						"do_not_use__cxa_atexit": false,
+						"do_not_use_exceptions": true,
+						"do_not_use_rtti": true,
+						"do_not_use__cxa_atexit": true,
 						"do_not_use_thread_safe_statics": false,
 						"other_optimization_flags": ""
 					},
@@ -254,7 +288,8 @@
 					}
 				},
 				"archiver": {
-					"archiver_flags": "-r"
+					"archiver_flags": "-r",
+					"libOutputPrefix": "lib"
 				},
 				"createFlash": {
 					"enabled": true,
@@ -262,6 +297,7 @@
 					"copy_only_section_text": false,
 					"copy_only_section_data": false,
 					"copy_only_sections": [],
+					"create_algorithm_file": false,
 					"other_flags": ""
 				},
 				"createList": {
@@ -295,6 +331,7 @@
 					"extra_compressed_extension": true,
 					"bit_extension": false,
 					"multiplication_subset_of_the_M_extension": false,
+					"vector_cryptography_extensions": "",
 					"integer_ABI": "ilp32e",
 					"floating_point_ABI": "none",
 					"tuning": "default",
@@ -310,11 +347,11 @@
 		]
 	},
 	"flashConfig": {
-		"mcutype": "CH32V003",
+		"mcutype": "CH32V00x",
 		"address": "0x08000000",
 		"target_path": "obj/V003J4M_TasmotaAlarmCam.hex",
 		"clkSpeed": "High",
-		"debug_interface_mode": "",
+		"debug_interface_mode": "1-wire serial",
 		"erase": true,
 		"program": true,
 		"verify": true,
@@ -323,6 +360,8 @@
 		"disablepowerout": false,
 		"clearcodeflash": false,
 		"disablecodeprotect": false,
+		"flashType": "Internal",
+		"asmFile_path": "",
 		"exepath": "",
 		"exearguments": ""
 	},
@@ -391,7 +430,7 @@
 			"showDebugOutputTimestamps": true
 		},
 		"reserve": {
-			"PROGRAM_NAME": "obj\\V003J4M_TasmotaAlarmCam.elf",
+			"PROGRAM_NAME": "obj/V003J4M_TasmotaAlarmCam.elf",
 			"PROJECT_ATTR": "V003J4M_TasmotaAlarmCam",
 			"PROJECT_BUILD_CONFIG_AUTO_ATTR": true,
 			"PROJECT_BUILD_CONFIG_ID_ATTR": "",

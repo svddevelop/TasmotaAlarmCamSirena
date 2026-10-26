@@ -19,6 +19,7 @@
     <nature>org.eclipse.cdt.core.cnature</nature>
     <nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
     <nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+    <nature>org.eclipse.cdt.core.ccnature</nature>
   </natures>
   <linkedResources/>
   <filteredResources>
@@ -28,6 +29,54 @@
       <matcher>
         <id>org.eclipse.ui.ide.multiFilter</id>
         <arguments>1.0-name-matches-false-false-*.wvproj</arguments>
+      </matcher>
+    </filter>
+    <filter>
+      <name>User/SYS</name>
+      <type>6</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-name-matches-false-false-millis.h</arguments>
+      </matcher>
+    </filter>
+    <filter>
+      <name>User/SYS</name>
+      <type>6</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-name-matches-false-false-millis.c</arguments>
+      </matcher>
+    </filter>
+    <filter>
+      <name>User</name>
+      <type>10</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-name-matches-false-false-SYS</arguments>
+      </matcher>
+    </filter>
+    <filter>
+      <name/>
+      <type>6</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-name-matches-false-false-*.7z</arguments>
+      </matcher>
+    </filter>
+    <filter>
+      <name/>
+      <type>6</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-name-matches-false-false-*.zip</arguments>
+      </matcher>
+    </filter>
+    <filter>
+      <name/>
+      <type>6</type>
+      <matcher>
+        <id>org.eclipse.ui.ide.multiFilter</id>
+        <arguments>1.0-name-matches-false-false-*.tar</arguments>
       </matcher>
     </filter>
   </filteredResources>
