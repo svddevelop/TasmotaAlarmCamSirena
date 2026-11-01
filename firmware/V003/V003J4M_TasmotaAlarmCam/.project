@@ -32,27 +32,11 @@
       </matcher>
     </filter>
     <filter>
-      <name>User/SYS</name>
-      <type>6</type>
-      <matcher>
-        <id>org.eclipse.ui.ide.multiFilter</id>
-        <arguments>1.0-name-matches-false-false-millis.h</arguments>
-      </matcher>
-    </filter>
-    <filter>
-      <name>User/SYS</name>
-      <type>6</type>
-      <matcher>
-        <id>org.eclipse.ui.ide.multiFilter</id>
-        <arguments>1.0-name-matches-false-false-millis.c</arguments>
-      </matcher>
-    </filter>
-    <filter>
       <name>User</name>
-      <type>10</type>
+      <type>6</type>
       <matcher>
         <id>org.eclipse.ui.ide.multiFilter</id>
-        <arguments>1.0-name-matches-false-false-SYS</arguments>
+        <arguments>1.0-name-matches-false-false-main.c</arguments>
       </matcher>
     </filter>
     <filter>

@@ -1,7 +1,7 @@
 //#define DEBUG__
 
 #include "ClassSieren.h"
-#include "millis.h"
+#include "SYS/millis.h"
 
 //#include "SYS/millis.h"
 #include "sirendefines.h"
@@ -18,8 +18,8 @@ uint64_t get_systick() {
     static uint64_t last_cnt = 0;
     static uint64_t ms_acc   = 0;
     uint64_t cnt = STK->CNT;
-    // STK ¡ª 32-§Ò§Ú§ä§ß§í§Û §Ú §á§Ö§â§Ö§á§à§Ý§ß§ñ§Ö§ä§ã§ñ §Ü§Ñ§Ø§Õ§í§Ö ~89 c §á§â§Ú 48 §®§¤§è!
-    ms_acc += (uint32_t)(cnt - last_cnt);   // §å§é§Ú§ä§í§Ó§Ñ§Ö§Þ wrap-around
+    
+    ms_acc += (uint32_t)(cnt - last_cnt);   
     last_cnt = cnt;
     uint64_t ms = ms_acc / (F_CPU / 1000);
     ms_acc -= ms * (F_CPU / 1000);
@@ -27,11 +27,37 @@ uint64_t get_systick() {
 
 }
 
+// ---------------------------------------------------------------------------
+// Input debouncer: a new level is accepted only after it has been stable
+// for ALARM_DEBOUNCE_MS
+// ---------------------------------------------------------------------------
+bool Debounce::update(bool a_raw, uint32_t a_now)
+{
+    if ( a_raw != last_raw )
+    {
+        // the input has changed -> restart the settling time
+        last_raw = a_raw;
+        stamp    = a_now;
+    }
+    else if ( (uint32_t)(a_now - stamp) >= (uint32_t)ALARM_DEBOUNCE_MS )
+    {
+        // the input keeps its level long enough -> accept it
+        level = last_raw;
+    }
+    return level;
+}
+
 void ClassSiren::run()
 {
 
     this->setReedAlarmActive( isReedActive() );
     this->setEspAlarmActive( isESPBreaked() );
+
+    // Reset condition after the 6 minutes timeout (see Description.md):
+    // the reed contact must be closed (door shut to GND) AND PIN_ESPALARM
+    // must not be active. Only then the siren is allowed to trigger again.
+    if ( alarmFinished && reedClosed && (espAlarmActive == false) )
+        alarmFinished = false;
 
     this->setAlarm( isAlarmActive() );
 
@@ -67,6 +93,20 @@ bool ClassSiren::isAlarmActive()
       triggerReedAlarm ;
 }
 
+// Start the alarm. The 6 minutes timeout and the 1s/500ms phase are restarted
+// only for a NEW alarm; an already running alarm keeps both of them, so no
+// short drop of PIN_ALARM_PS / PIN_ALARM_PS2 can happen anymore.
+void ClassSiren::startAlarm()
+{
+    if ( triggerReedAlarm ) return;     // the alarm is already running
+
+    triggerReedAlarm     = true;
+    alarm_start_ms       = MIL_read();
+    alarm_timeout        = 0;
+    alarm_active_counter = 0;
+    alarmPhase           = true;        // switch the siren on immediately
+}
+
 void ClassSiren::setEspAlarmActive(bool a_val)
 {
     
@@ -81,10 +121,10 @@ void ClassSiren::setEspAlarmActive(bool a_val)
         (last_espAlarmActive == false)
     )
     {
-        triggerReedAlarm = true;
-        alarm_timeout = 0;
-        alarm_active_counter = 0;
-        MIL_reset();
+        // active: allows the siren even if watching the reed is forbidden;
+        // a level which is already active never restarts the alarm
+        if ( ! alarmFinished )
+            startAlarm();
     }    
 
     if (
@@ -93,6 +133,7 @@ void ClassSiren::setEspAlarmActive(bool a_val)
         (last_espAlarmActive == true)
     )
     {
+        // active -> inactive: reset of the siren sound
         triggerReedAlarm = false;
     }
 }
@@ -112,36 +153,44 @@ void ClassSiren::setReedAlarmActive(bool a_val)
         (last_reedAlarmActive == false)
     )
     {
-        triggerReedAlarm = true;
-        alarm_timeout = 0;
-        alarm_active_counter = 0;
-        MIL_reset();
+        // even a short opening of the door switches the siren on and it
+        // stays on until the reset condition is met
+        if ( ! alarmFinished )
+            startAlarm();
     }
 
 }
 
 
 ClassSiren::ClassSiren():
+    triggerReedAlarm(false),
     reedAlarmActive(false),
     last_reedAlarmActive(false),
-    last_espAlarmActive(false),
     espAlarmActive(false),
+    last_espAlarmActive(false),
     alarm(false),
+
     alarmPhase(false),
-    
+    alarmFinished(false),
+    reedClosed(true),               // the door is closed in the normal state
+    db_reed(false),                 // reed closed -> contact to GND
+    db_allow(true),                 // watching the reed is forbidden until proven
+    db_esp(false),                  // no alarm from the ESP yet
+    alarm_start_ms(0),
+
     tick_duration(0),
     alarm_timeout(0),
-    triggerReedAlarm(false),
     alarm_active_counter(0)
 {
   PIN_output(PIN_ALARM_PS);                         // Alarm signal to the Piezo-Buzzer
-  PIN_output(PIN_ALARM_PS2);                        // Alarm signal to the Piezo-Buzzer
+  PIN_output(PIN_ALARM_PS2);                        // Alarm signal to the IP-Cam
   PIN_output(PIN_ALARM_PSL);                        // Alarm signal to the ESP
-  PIN_write(PIN_ALARM_PS, ALARM_PERIOD_OFF);
-  PIN_write(PIN_ALARM_PS2, ALARM_PERIOD_OFF);
-  PIN_write(PIN_ALARM_PSL, ALARM_PERIOD_OFF);
 
-  PIN_input_PU(PIN_ALARM_INPUT);                    // Alarm activation on reise from ALARM_OFF to ALARM_ON
+  PIN_write(PIN_ALARM_PS,  ALARM_PULSE_OFF);
+  PIN_write(PIN_ALARM_PS2, ALARM_PULSE_OFF);
+  PIN_write(PIN_ALARM_PSL, ALARM_PULSE_OFF);
+
+  PIN_input_PU(PIN_ALARM_INPUT);                    // Alarm activation on rise from ALARM_OFF to ALARM_ON
   PIN_input(PIN_ALARM_BREAK_A);                  //!!! Stop alarm. It going from ?   PU -FOR DEBUG AND SIMULATION ONLY
   //PIN_input(PIN_ALARM_BREAK_B);                   // With pull-up.  Stop alarm from the external button
 
@@ -151,34 +200,29 @@ ClassSiren::ClassSiren():
   #else 
   PIN_input(PIN_ESPALARM);
   #endif
-  //#endif    
-
-  PIN_write(PIN_ALARM_PS, ALARM_PULSE_OFF);
-  PIN_write(/*PIN_ALARM_PS2*/PA3, ALARM_PULSE_OFF);  
-
-
-  // 
-  /*  STK->CMP  = (F_CPU / 1000) - 1;   // 1 §Þ§ã
-    STK->CTLR |= STK_CTLR_STIE;       // §Ó§Ü§Ý§ð§é§Ú§ä§î §á§â§Ö§â§í§Ó§Ñ§ß§Ú§Ö
-    NVIC_EnableIRQ(SysTicK_IRQn);
-    INT_enable();*/
-  //*          
-  
+  //#endif             
 
 }
 
 bool ClassSiren::isReedActive()
 {
-    uint8_t pin = PIN_read(PIN_ALARM_INPUT);
-    PIN_write(PIN_ALARM_PSL, pin); // <-- send current status of the reed-contact to the ESP (switch_status[13])
+    uint32_t now = MIL_read();
+
+    // current state of the reed-contact, filtered against the contact bounce
+    bool reed_open = db_reed.update( PIN_read(PIN_ALARM_INPUT) != 0, now );
+    reedClosed = ( reed_open == false );
+
+    // send current status of the reed-contact to the ESP (switch_status[13]),
+    // independent of whether watching the reed is allowed or not
+    PIN_write(PIN_ALARM_PSL, reed_open);
 
     //check, if allow to use reed and device is active
-    uint8_t pin_allow = PIN_read(PIN_ALARM_BREAK_A);
-    bool result = (pin_allow == ALLOW_ALARM_ON);    //<-- if ESP allow to witch for  the reed, then do it
+    bool pin_allow = db_allow.update( PIN_read(PIN_ALARM_BREAK_A) != 0, now );
+    bool result = (pin_allow == (bool)ALLOW_ALARM_ON);    //<-- if ESP allow to witch for  the reed, then do it
 
     if ( result )
     {
-        result = (pin == ALARM_ON);  
+        result = (reed_open == (bool)ALARM_ON);  
     }
 
     return result;
@@ -186,7 +230,9 @@ bool ClassSiren::isReedActive()
 
 bool ClassSiren::isESPBreaked()
 {
-    bool result = PIN_read(PIN_ESPALARM) == BREAK_ACTIVE;
+    // filtered against short pulses on PIN_ESPALARM (they used to switch
+    // the siren off for a few microseconds and to make it click)
+    bool result = db_esp.update( PIN_read(PIN_ESPALARM) != 0, MIL_read() );
     return result;
 }
 
@@ -202,34 +248,37 @@ void ClassSiren::setAlarmPhase(bool a_val)
 
 void ClassSiren::setAlarm(bool a_state)
 {
-    alarm_timeout = MIL_read();
-    
-    //alarm_timeout += (current_systick - last_sysTick);
-    //last_sysTick = current_systick;
+    if ( ! a_state )
+    {
+        // no alarm: both outputs are held low, the phase is not touched
+        PIN_write(PIN_ALARM_PS,  ALARM_PULSE_OFF);
+        PIN_write(PIN_ALARM_PS2, ALARM_PULSE_OFF);
+        return;
+    }
+
+    // The alarm time is measured from the alarm start. The global millis
+    // counter is never reset, so the 1s/500ms phase cannot be disturbed.
+    alarm_timeout = MIL_read() - alarm_start_ms;
 
     if ( alarm_timeout > ALARM_BREAK_BY_TIME)
         alarm_timeout = ALARM_BREAK_BY_TIME;
 
-    if ( a_state )
+    if (
+      ( alarm_timeout >= ALARM_BREAK_BY_TIME)
+      //(alarm_active_counter >= ALARM_BREAK_BY_COUNT)
+    
+    )
     {
-        
-
-        if  (
-          ( alarm_timeout >= ALARM_BREAK_BY_TIME)
-          //(alarm_active_counter >= ALARM_BREAK_BY_COUNT)
-        
-        )
-        {
-            //--DOES NOT RESET TRIGGER:triggerReedAlarm = false;
-            setEspAlarmActive(false);
-            espAlarmActive = true;  // <-- !!! This is very importent! without it will be reset espAlarmActive form esp 
-            alarm_timeout = ALARM_BREAK_BY_TIME +1;
-            PIN_write(PIN_ALARM_PS,  false );  // <-- switch off the syren only, but camera and ESP must have notification
-            PIN_write(PIN_ALARM_PS,  false );  // <-- switch off the syren only, but camera and ESP must have notification
-            PIN_write(PIN_ALARM_PS2, false ); 
-            PIN_write(PIN_ALARM_PS2, false );
-            return;
-        }
+        // 6 minutes (ALARM_BREAK_BY_TIME) are over: the siren is silent,
+        // the camera finishes the recording. The outputs are switched off
+        // exactly once - no short pulses are generated here.
+        triggerReedAlarm = false;
+        alarmFinished    = true;
+        alarm_timeout    = ALARM_BREAK_BY_TIME;
+        setAlarmPhase(false);
+        PIN_write(PIN_ALARM_PS,  ALARM_PULSE_OFF);  // the siren is silent ...
+        PIN_write(PIN_ALARM_PS2, ALARM_PULSE_OFF);  // ... and the camera finishes the recording
+        return;
     }
 
     tick_duration = alarm_timeout % (ALARM_PERIOD_ON + ALARM_PERIOD_OFF);
@@ -237,6 +286,6 @@ void ClassSiren::setAlarm(bool a_state)
     setAlarmPhase( tick_duration <  ALARM_PERIOD_ON );
 
            
-    PIN_write(PIN_ALARM_PS,  alarmPhase && a_state ? ALARM_PULSE_ON : ALARM_PULSE_OFF ); // <-- a sirent
-    PIN_write(PIN_ALARM_PS2, /*alarmPhase &&*/ a_state ? ALARM_PULSE_ON : ALARM_PULSE_OFF ); // <-- a ESP notification
+    PIN_write(PIN_ALARM_PS,  alarmPhase ? ALARM_PULSE_ON : ALARM_PULSE_OFF ); // <-- a sirent
+    PIN_write(PIN_ALARM_PS2, ALARM_PULSE_ON ); // <-- a ESP notification: always on while the alarm runs
 }

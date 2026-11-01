@@ -28,19 +28,9 @@
 				"name": "*.wvproj"
 			},
 			{
-				"parentLogicPath": "User/SYS",
-				"type": "file",
-				"name": "millis.h"
-			},
-			{
-				"parentLogicPath": "User/SYS",
-				"type": "file",
-				"name": "millis.c"
-			},
-			{
 				"parentLogicPath": "User",
-				"type": "folder",
-				"name": "SYS"
+				"type": "file",
+				"name": "main.c"
 			},
 			{
 				"parentLogicPath": "",
@@ -347,11 +337,11 @@
 		]
 	},
 	"flashConfig": {
-		"mcutype": "CH32V00x",
+		"mcutype": "CH32V003",
 		"address": "0x08000000",
 		"target_path": "obj/V003J4M_TasmotaAlarmCam.hex",
 		"clkSpeed": "High",
-		"debug_interface_mode": "1-wire serial",
+		"debug_interface_mode": "",
 		"erase": true,
 		"program": true,
 		"verify": true,

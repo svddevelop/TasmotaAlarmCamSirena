@@ -108,6 +108,36 @@
 #define TOBYTE(x,y)     (CHR_TO_BIN(x) * 16 + CHR_TO_BIN(y))
 
 
+#include "cstdint"
+//uint64_t ver =
+// static_cast<int64_t>(TOBYTE(BUILD_YEAR_CH2,BUILD_YEAR_CH3) << 24) | \
+// static_cast<int64_t>(TOBYTE(BUILD_MONTH_CH0,BUILD_MONTH_CH1) << 16) | \
+// static_cast<int64_t>(TOBYTE(BUILD_DAY_CH0,BUILD_DAY_CH1) << 8) | \
+// static_cast<int64_t>(TOBYTE(BUILD_HOUR_CH0,BUILD_HOUR_CH1) ) ;
+
+typedef union {
+    uint64_t u64;
+    struct {
+        uint32_t low;  // ¡ì?¡ì?¡ì?¡ì?¡ì¨º¡ì?¡ì? 32 ¡ì?¡ì?¡ì?¡ì?
+        uint32_t high; // ¡ì?¡ì?¡ì?¡ì?¡ì¨º¡ì?¡ì? 32 ¡ì?¡ì?¡ì?¡ì?
+    } u32;
+    struct {
+        uint8_t c_[8];
+    } u8;
+} uint64_convert_t;
+
+uint64_convert_t* get_buildversion() {
+    static uint64_convert_t converter;
+    converter.u64 =
+        (uint64_t)(TOBYTE(BUILD_YEAR_CH2,BUILD_YEAR_CH3) << 24) |
+        (uint64_t)(TOBYTE(BUILD_MONTH_CH0,BUILD_MONTH_CH1) << 16) |
+        (uint64_t)(TOBYTE(BUILD_DAY_CH0,BUILD_DAY_CH1) << 8) |
+        (uint64_t)(TOBYTE(BUILD_HOUR_CH0,BUILD_HOUR_CH1))
+    ;
+
+    return &converter;
+}
+
 
 
 #endif // BUILD_DEFS_H

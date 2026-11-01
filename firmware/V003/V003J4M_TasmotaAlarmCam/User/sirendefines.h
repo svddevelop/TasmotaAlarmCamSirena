@@ -1,7 +1,7 @@
 #pragma once
 
-#include "system.h"                               // system functions
-#include "gpio.h"                                 // GPIO functions
+#include "SYS/system.h"                               // system functions
+#include "SYS/gpio.h"                                 // GPIO functions
 
 //#include "SYS/millis.h"
 //
@@ -42,28 +42,24 @@
 #define ALARM_ON            (1)
 #define ALARM_OFF           (0)
 
-//#define ALARM_PERIOD_ON     (30000000)  // Period in ms, when the Piezo-buzzer is active
+// Input settling time: a level on PIN_ALARM_INPUT / PIN_ALARM_BREAK_A /
+// PIN_ESPALARM must be stable this long before it is accepted.
+// Rejects contact bounce, EMI and short pulses which used to cause
+// the short drops on PIN_ALARM_PS / PIN_ALARM_PS2 (clicks of the siren).
+#define ALARM_DEBOUNCE_MS   (30)
+
+
 #define ALARM_PERIOD_ON     (1000)  // Period in ms, when the Piezo-buzzer is active
-//#define ALARM_PERIOD_OFF    (10000000)   // Period in ms, when the Piezo-buzzer is inactive
-#define ALARM_PERIOD_OFF    (500)   // Period in ms, when the Piezo-buzzer is inactive
+
+#define ALARM_PERIOD_OFF    (300)   // Period in ms, when the Piezo-buzzer is inactive
 
 
 /////
 
-/*
-  02.08.2026 - Programmeble stops of alarm by presetted time period.
 
-  if does the sensor not active, the alarm will be break by ALARM_MUST_ACTIVE_IN_MIN
-              -----------------
-*/
-/*
-#define ALARM_MUST_ACTIVE_IN_MIN  (6)
-#define _ALARM_CYCLES_LONG(min)   ((uint64_t)(min) * 60ULL * 10ULL * ((uint64_t)(F_CPU)))
-#define ALARM_BREAK_BY_TIME       ((uint64_t)(_ALARM_CYCLES_LONG( ALARM_MUST_ACTIVE_IN_MIN ) ))
-*/
-#define ALARM_MUST_ACTIVE_IN_MIN  (6)
+#define ALARM_MUST_ACTIVE_IN_MIN  (5)
 
-// 6 §Þ§Ú§ß§å§ä = 6 * 60 * 1000 §Þ§ã = 360000
+
 #define _ALARM_CYCLES_LONG(min)   ((uint64_t)(min) * 60ULL * 1000ULL)
 #define ALARM_BREAK_BY_TIME       ((uint64_t)_ALARM_CYCLES_LONG(ALARM_MUST_ACTIVE_IN_MIN))
 

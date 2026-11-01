@@ -1,14 +1,14 @@
-//  This µC have 3 inputs signals:
+//  This  have 3 inputs signals:
 //    PC1 - Alarm Input
-//    PC2 - Alarm break (from µC)
+//    PC2 - Alarm break (from )
 //    PC3 - Alarm break (external button)
 //
 // ... and one output: 
 //    PA1 - Alaram output (Piezo-buzzer Sirena)
 //
-// The external µC set the alarm-signal on "Alarm Input".
+// The external  set the alarm-signal on "Alarm Input".
 // The the alarm doesn't breaked, switched between 2 tones(phases).
-// The alarm could be breaked from external µC ("Alarm break (from µC)" must be BREAK_ACTIVE)
+// The alarm could be breaked from external  ("Alarm break (from )" must be BREAK_ACTIVE)
 //   or from the externam button "Alarm break (external button)" (it must be reise from BREAK_INACTIVE to BREAK_ACTIVE)
 
 //
@@ -28,9 +28,9 @@
 // ===================================================================================
 // Libraries, Definitions and Macros
 // ===================================================================================
-#include "system.h"                               // system functions
-#include "gpio.h"                                 // GPIO functions
-#include "millis.h"
+#include "SYS/system.h"                               // system functions
+#include "SYS/gpio.h"                                 // GPIO functions
+#include "SYS/millis.h"
 
 #ifndef __code
 #define __code const __attribute__((section(".rodata")))
@@ -39,6 +39,10 @@
 #include "sirendefines.h"
 #include "ClassSieren.h"
 
+uint64_t aa;
+
+#include "buildvers.h"
+uint64_convert_t buildversion;
 
 
 //
@@ -82,6 +86,10 @@ static uint64_t counterr1 = 0;
 // Main Function
 // ===================================================================================
 int main(void) {
+
+
+    buildversion  = *get_buildversion();
+
 
   STK_init();
    MIL_init();
