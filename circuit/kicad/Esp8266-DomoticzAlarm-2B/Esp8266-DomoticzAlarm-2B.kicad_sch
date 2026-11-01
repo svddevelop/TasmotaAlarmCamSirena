@@ -2533,6 +2533,143 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Regulator_Linear:LD1117V33"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -3.81 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LD1117V33"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.st.com/resource/en/datasheet/ld1117.pdf"
+				(at 2.54 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "800 mA Fixed Low Drop Positive Voltage Regulator (ldo). Max input 15V. Fixed Output 3.3V. TO-220-3"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "low-dropout-regulator ldo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*TO?220*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LD1117V33_0_1"
+				(rectangle
+					(start -5.08 -5.08)
+					(end 5.08 1.905)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "LD1117V33_1_1"
+				(pin power_in line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "VI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "VO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Regulator_Linear:MIC5219-3.3YM5"
 			(pin_names
 				(offset 0.254)
@@ -3204,6 +3341,16 @@
 	)
 	(wire
 		(pts
+			(xy 77.47 50.8) (xy 78.74 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09582509-6336-4bc1-a9bc-6671a6fa9b50")
+	)
+	(wire
+		(pts
 			(xy 160.02 113.03) (xy 161.29 113.03)
 		)
 		(stroke
@@ -3544,6 +3691,16 @@
 	)
 	(wire
 		(pts
+			(xy 60.96 50.8) (xy 62.23 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a8b48dd-2fde-42ba-9df2-51fe02ca424a")
+	)
+	(wire
+		(pts
 			(xy 48.26 143.51) (xy 48.26 140.97)
 		)
 		(stroke
@@ -3611,6 +3768,16 @@
 			(type default)
 		)
 		(uuid "721474d4-1c3d-454c-871b-1d8de1761010")
+	)
+	(wire
+		(pts
+			(xy 60.96 52.07) (xy 60.96 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ac52534-719a-4dbd-8efa-277426385cfb")
 	)
 	(wire
 		(pts
@@ -3934,6 +4101,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 50.8) (xy 78.74 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da56c341-75c9-4c91-85cb-421a4af3a3e6")
+	)
+	(wire
+		(pts
 			(xy 100.33 125.73) (xy 101.6 125.73)
 		)
 		(stroke
@@ -3941,6 +4118,16 @@
 			(type default)
 		)
 		(uuid "e06c8f45-37f4-4d79-b92e-ff1ba63f29e9")
+	)
+	(wire
+		(pts
+			(xy 59.69 52.07) (xy 60.96 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e10f31ee-d866-48a7-a4ff-80f16300535d")
 	)
 	(wire
 		(pts
@@ -4061,6 +4248,16 @@
 			(type default)
 		)
 		(uuid "fd6035ff-ccf6-47b4-bece-b56c903057ca")
+	)
+	(wire
+		(pts
+			(xy 64.77 58.42) (xy 69.85 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fdd6902e-0a82-45b4-929d-60076762324e")
 	)
 	(wire
 		(pts
@@ -4610,6 +4807,28 @@
 			)
 		)
 	)
+	(global_label "CH_VDD"
+		(shape input)
+		(at 78.74 49.53 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "64f278eb-6edc-4fb2-80f0-578470635047")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.74 39.3481 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "ALARM_CAM_DI"
 		(shape input)
 		(at 160.02 115.57 180)
@@ -4777,6 +4996,28 @@
 		(uuid "98fd9358-bab9-48e2-96fa-38347e0660a1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 20.0562 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CH_12V"
+		(shape input)
+		(at 59.69 52.07 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9c9b9a28-59bb-4ade-93ec-90234e860e51")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 49.6291 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5459,6 +5700,28 @@
 		(uuid "fdee0cac-3b6a-40d9-a8d6-8f955a8f9027")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 32.7562 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CH_GND"
+		(shape input)
+		(at 64.77 58.42 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fef0e02e-0652-41ad-846f-de7c62032461")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 54.3462 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8323,6 +8586,77 @@
 			(project "Esp8266-DomoticzAlarm-2B"
 				(path "/e1345bf2-2850-4d6e-a7ea-3c40f0f448c6"
 					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Linear:LD1117V33")
+		(at 69.85 50.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eb6ece77-c447-429d-9def-c1b71846ad51")
+		(property "Reference" "U5"
+			(at 69.85 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LD1117V33"
+			(at 69.85 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+			(at 69.85 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 72.39 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 69.85 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "14d6259d-4cbe-460a-b09f-78b3aa7238f2")
+		)
+		(pin "3"
+			(uuid "9b35f63c-71a8-45b4-932e-51056276529c")
+		)
+		(pin "2"
+			(uuid "91643c78-81fc-4055-ad11-1a9c12e7e17d")
+		)
+		(instances
+			(project ""
+				(path "/e1345bf2-2850-4d6e-a7ea-3c40f0f448c6"
+					(reference "U5")
 					(unit 1)
 				)
 			)
