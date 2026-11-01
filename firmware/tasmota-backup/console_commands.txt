@@ -1,0 +1,33 @@
+SwitchMode1 6
+SwitchMode2 1
+SwitchMode3 0
+SetOption114 1
+SetOption65 1
+
+Domoticz support:
+
+SetOption19 1
+
+Rule for MQTT notification of state of Switch3 was changed:
+
+Rule1 ON Switch3#state=1 DO Publish stat/%topic%/switch3 {\"device_id\":\"%topic%\",\"switch\":3,\"state\":1} ENDON ON Switch3#state=0 DO Publish stat/%topic%/switch3 {\"device_id\":\"%topic%\",\"switch\":3,\"state\":0} ENDON
+
+Rule1 1
+
+Rule for Timeout of siren (on 5 min):
+
+Rule2 on Power2#State=1 do RuleTimer1 300 endon on Rules#Timer=1 do backlog Power1 0; Power2 0; endon
+Rule3 on Power2#State=1 do RuleTimer2 300 endon on Rules#Timer=2 do backlog Power1 0; Power2 0; endon
+
+Rule2 1
+Rule3 1
+
+
+http://<IP>/cm?cmnd=DzSwitch3 <new_IDX>
+http://192.168.0.207/cm?cmnd=DzSwitch3 000140C4
+
+
+
+
+
+
